@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (directionPlayer.x != 0 || directionPlayer.y != 0)
         {
-            float directionX = directionPlayer.x * _leftRightSpeed * Time.deltaTime;
+            float directionX = -directionPlayer.x * _leftRightSpeed * Time.deltaTime;
             float directionY = directionPlayer.y * _upDownSpeed * Time.deltaTime;
 
             Vector3 angularVelocity = new Vector3(directionX, directionX, directionY);
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         }else if (directionPlayer.z != 0)
         {
             float directionZ = directionPlayer.z * _forwardSpeed * Time.deltaTime;
-            _playerRb.AddForce(new Vector3(_playerRb.linearVelocity.x, _playerRb.linearVelocity.y, directionZ), ForceMode.Force);
+            _playerRb.AddForce(new Vector3(directionZ, _playerRb.linearVelocity.y, _playerRb.linearVelocity.z), ForceMode.Force);
         }
     }
 }
